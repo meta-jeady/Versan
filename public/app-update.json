@@ -1,8 +1,8 @@
 {
-  "currentVersion": "2.3.4",
+  "currentVersion": "2.3.5",
   "minVersion": "2.0.0",
   "releaseDate": "2026-11-03",
-  "releaseNotes": "Version 2.3.4 : Alertes de consommation 200 Mo personnalisées, notification d'expiration quotidienne, canal de diffusion GitHub en temps réel et nouveau moteur Xray Core optimisé.",
-  "downloadUrl": "https://github.com/meta-jeady/Freebaduc/releases",
+  "releaseNotes": "Version 2.3.5 : Notifications améliorées, nom mémorisé, alertes 200 Mo et canal de diffusion plus rapide.",
+  "downloadUrl": "https://github.com/meta-jeady/Versan/releases/latest",
   "forceUpdate": false
 }
