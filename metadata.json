@@ -1,0 +1,6 @@
+{
+  "name": "Orange VPN",
+  "description": "Orange VPN v2.3.4 - Fast & Secure VPN Client. Powered by @kcorp-tech.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

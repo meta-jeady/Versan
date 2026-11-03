@@ -1,0 +1,46 @@
+name: kco4p_vpn
+description: KČØ4P VPN
+publish_to: 'none'
+version: 2.3.4+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_v2ray: ^1.0.10
+  cupertino_icons: ^1.0.8
+  file_picker: ^8.0.7
+  path_provider: ^2.1.4
+  share_plus: ^10.0.2
+  shared_preferences: ^2.2.3
+  encrypt: ^5.0.3
+  flutter_local_notifications: ^17.2.3
+  timezone: ^0.9.4
+  flutter_timezone: ^3.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1   # ← ajouté
+
+flutter:
+  uses-material-design: true
+
+  # Décommente et ajuste si ton logo est dans assets/
+  # assets:
+  #   - assets/logo.png
+
+# ============================================
+# Configuration du logo de l'application
+# ============================================
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/logo.png"              # ← mets le chemin exact de ton logo ici
+  adaptive_icon_background: "#FF6600"        # couleur de fond (Orange)
+  adaptive_icon_foreground: "assets/logo.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true

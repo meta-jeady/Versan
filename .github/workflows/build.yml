@@ -1,0 +1,57 @@
+name: Build KČØ4P VPN APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+          channel: 'stable'
+          cache: true
+
+      - name: Create Android platform
+        run: |
+          flutter create . --org com.kco4p --project-name kco4p_vpn --platforms=android
+          flutter pub get
+
+      # === Génération du logo personnalisé ===
+      - name: Generate custom launcher icons
+        run: |
+          if [ -f "assets/logo.png" ]; then
+            echo "Logo trouvé → génération des icônes..."
+            dart run flutter_launcher_icons
+          else
+            echo "assets/logo.png introuvable → logo Flutter par défaut conservé"
+          fi
+
+      - name: Build APK Release
+        run: flutter build apk --release
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/app/outputs/flutter-apk/app-release.apk
+          tag_name: v${{ github.run_number }}
+          name: KČØ4P VPN v${{ github.run_number }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
