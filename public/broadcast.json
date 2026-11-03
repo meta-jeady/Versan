@@ -1,9 +1,9 @@
 {
-  "id": "orange-broadcast-v234-001",
-  "timestamp": "2026-11-03T00:00:00Z",
-  "priority": "normal",
-  "title": "Orange VPN • Message Officiel",
-  "message": "Bienvenue sur Orange VPN v2.3.4 ! La connexion ultra-sécurisée et rapide powered by @kcorp-tech est opérationnelle.",
+  "id": "msg-20261103-091011-6019",
+  "timestamp": "2026-11-03T09:10:11Z",
+  "priority": "high",
+  "title": "Orange VPN • Info Importante",
+  "message": "Salut à tous, j'espère que vous allez bien ! Votre Orange VPN est toujours actif. Restez connectés",
   "actionLabel": "Voir les détails",
-  "actionUrl": "https://github.com/meta-jeady/Freebaduc"
+  "actionUrl": "https://github.com/meta-jeady/Versan"
 }
