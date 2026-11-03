@@ -1,0 +1,62 @@
+name: Envoyer une notification
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Titre de la notification"
+        required: true
+        default: "Orange VPN • Info Importante"
+      message:
+        description: "Ton message (ce que les utilisateurs vont voir)"
+        required: true
+      priority:
+        description: "Priorité (normal ou high)"
+        required: true
+        default: "high"
+        type: choice
+        options:
+          - normal
+          - high
+      actionUrl:
+        description: "Lien optionnel (quand on clique sur la notif)"
+        required: false
+        default: "https://github.com/meta-jeady/Versan"
+
+jobs:
+  broadcast:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Créer le nouveau broadcast.json
+        run: |
+          ID="msg-$(date +%Y%m%d-%H%M%S)-$RANDOM"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          cat > public/broadcast.json << EOF
+          {
+            "id": "$ID",
+            "timestamp": "$TIMESTAMP",
+            "priority": "${{ github.event.inputs.priority }}",
+            "title": "${{ github.event.inputs.title }}",
+            "message": "${{ github.event.inputs.message }}",
+            "actionLabel": "Voir les détails",
+            "actionUrl": "${{ github.event.inputs.actionUrl }}"
+          }
+          EOF
+          
+          echo "===== Nouveau broadcast créé ====="
+          cat public/broadcast.json
+
+      - name: Commit et push
+        run: |
+          git config user.name "Orange VPN Bot"
+          git config user.email "bot@orange-vpn.local"
+          git add public/broadcast.json
+          git commit -m " Broadcast: ${{ github.event.inputs.title }}"
+          git push
