@@ -1,8 +1,8 @@
 {
-  "currentVersion": "2.3.5",
+  "currentVersion": "2.3.6",
   "minVersion": "2.0.0",
   "releaseDate": "2026-11-03",
-  "releaseNotes": "Version 2.3.5 : Notifications améliorées (restent dans la barre), nom mémorisé, alertes 200 Mo, diffusion plus rapide (45s).",
+  "releaseNotes": "Version 2.3.6 : Test de mise à jour automatique.",
   "downloadUrl": "https://github.com/meta-jeady/Versan/releases/latest",
   "forceUpdate": false
 }
