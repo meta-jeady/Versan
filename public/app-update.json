@@ -1,8 +1,8 @@
 {
-  "currentVersion": "2.3.8",
+  "currentVersion": "2.3.7",
   "minVersion": "2.0.0",
   "releaseDate": "2026-11-04",
-  "releaseNotes": "Version 2.3.8 : notifications expiration + 100 Mo + correctif téléchargement.",
-  "downloadUrl": "https://github.com/meta-jeady/Versan/releases/download/v2.3.8/app-release.apk",
+  "releaseNotes": "Version 2.3.7 : notifications expiration + 100 Mo + correctif téléchargement.",
+  "downloadUrl": "https://github.com/meta-jeady/Versan/releases/download/v27/app-release.apk",
   "forceUpdate": false
 }
