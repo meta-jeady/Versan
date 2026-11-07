@@ -32,8 +32,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - assets/orange_vpn_logo.png   # ← Logo pour le bouton power
+  # Décommente si tu as un logo
+  # assets:
+  #   - assets/logo.png
 
 flutter_launcher_icons:
   android: true
