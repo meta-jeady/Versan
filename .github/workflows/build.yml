@@ -33,7 +33,31 @@ jobs:
           flutter create . --org com.kco4p --project-name kco4p_vpn --platforms=android
           flutter pub get
 
-      # === Génération du logo personnalisé ===
+      # === Gestion des logos ===
+      - name: Prepare logos
+        run: |
+          mkdir -p assets
+          
+          # Si orange_vpn_logo.png n'existe pas, on le copie depuis logo.png
+          if [ ! -f "assets/orange_vpn_logo.png" ] && [ -f "assets/logo.png" ]; then
+            echo "Création de assets/orange_vpn_logo.png à partir de logo.png"
+            cp assets/logo.png assets/orange_vpn_logo.png
+          fi
+          
+          # Vérification
+          if [ -f "assets/orange_vpn_logo.png" ]; then
+            echo " assets/orange_vpn_logo.png trouvé"
+          else
+            echo "  assets/orange_vpn_logo.png introuvable"
+          fi
+          
+          if [ -f "assets/logo.png" ]; then
+            echo " assets/logo.png trouvé"
+          else
+            echo "  assets/logo.png introuvable"
+          fi
+
+      # === Génération des icônes de l'application ===
       - name: Generate custom launcher icons
         run: |
           if [ -f "assets/logo.png" ]; then
