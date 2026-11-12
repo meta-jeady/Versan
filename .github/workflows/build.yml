@@ -28,17 +28,19 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Get dependencies
-        run: flutter pub get
+      - name: Clean old Android folder & regenerate
+        run: |
+          rm -rf android
+          flutter create . --org com.kco4p --project-name kco4p_vpn --platforms=android
+          flutter pub get
 
-      # === Génération du logo personnalisé ===
       - name: Generate custom launcher icons
         run: |
           if [ -f "assets/logo.png" ]; then
             echo "Logo trouvé → génération des icônes..."
             dart run flutter_launcher_icons
           else
-            echo " assets/logo.png introuvable → logo Flutter par défaut conservé"
+            echo "assets/logo.png introuvable"
           fi
 
       - name: Build APK Release
@@ -51,10 +53,5 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: KČØ4P VPN v${{ github.run_number }}
           generate_release_notes: true
-          body: |
-            ### Nouveautés
-            - Personnages animés (character_off / character_on)
-            - Temps de session visible
-            - Lien groupe WhatsApp
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
