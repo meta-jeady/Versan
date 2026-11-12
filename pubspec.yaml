@@ -32,9 +32,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Décommente si tu as un logo
-  # assets:
-  #   - assets/logo.png
+  assets:
+    - assets/character_off.png
+    - assets/character_on.png
+    - assets/logo.png
 
 flutter_launcher_icons:
   android: true
