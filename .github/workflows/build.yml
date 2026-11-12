@@ -34,6 +34,16 @@ jobs:
           flutter create . --org com.kco4p --project-name kco4p_vpn --platforms=android
           flutter pub get
 
+      # === Forcer le nom "Orange VPN" ===
+      - name: Force App Name to Orange VPN
+        run: |
+          sed -i 's/android:label="[^"]*"/android:label="Orange VPN"/g' android/app/src/main/AndroidManifest.xml
+          if [ -f "android/app/src/main/res/values/strings.xml" ]; then
+            sed -i 's/<string name="app_name">.*<\/string>/<string name="app_name">Orange VPN<\/string>/g' android/app/src/main/res/values/strings.xml
+          fi
+          echo " Nom de l'application forcé à : Orange VPN"
+          cat android/app/src/main/AndroidManifest.xml | grep android:label
+
       - name: Generate custom launcher icons
         run: |
           if [ -f "assets/logo.png" ]; then
@@ -51,7 +61,7 @@ jobs:
         with:
           files: build/app/outputs/flutter-apk/app-release.apk
           tag_name: v${{ github.run_number }}
-          name: KČØ4P VPN v${{ github.run_number }}
+          name: Orange VPN v${{ github.run_number }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
